@@ -1,20 +1,20 @@
-#. docker build -t rffmpeg-test .
+#. docker build -t rffmpeg-server .
+name: rffmpeg-server
 
 version: '3.8'
 services:
-  rffmpeg-test:
-    image: rffmpeg-test
-    container_name: rffmpeg-test
+  rffmpeg-server:
+    image: rffmpeg-server
+    container_name: rffmpeg-server
     environment:
       - SSH_USERS=dockerlimited:1027:65536 #username/group should match from the media server
       - SSH_GROUPS=dockergroup:65536
       - NVIDIA_DRIVER_CAPABILITIES=all
       - NVIDIA_VISIBLE_DEVICES=all
     volumes:
-      - path/to/id_rsa.pub:/etc/authorized_keys/dockerlimited:z
-      - media:/media
-      - cache:/cache
-      - config:/config:z
+      - jellyfin_media:/media
+      - jellyfin_cache:/cache
+      - jellyfin_config:/config:z
     ports:
       - 22:22
     deploy:
@@ -26,18 +26,21 @@ services:
 
 volumes:
   jellyfin_media:
+    name: jellyfin_media
     driver: local
     driver_opts:
       type: cifs
       o: username=username,password=pass,addr=<media server ip>,ro
       device: //<media server ip>/data/media
   jellyfin_cache:
+    name: jellyfin_cache
     driver: local
     driver_opts:
       type: cifs
       o: username=username,password=pass,addr=<media server ip>,file_mode=0777,dir_mode=0777
       device: //<media server ip>/docker/jellyfin/cache
   jellyfin_config:
+    name: jellyfin_config
     driver: local
     driver_opts:
       type: cifs
