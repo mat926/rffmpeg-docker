@@ -12,6 +12,7 @@ services:
       - NVIDIA_DRIVER_CAPABILITIES=all
       - NVIDIA_VISIBLE_DEVICES=all
     volumes:
+      - path/to/id_rsa.pub:/etc/authorized_keys/dockerlimited:z
       - jellyfin_media:/media
       - jellyfin_cache:/cache
       - jellyfin_config:/config:z
