@@ -1,5 +1,4 @@
 FROM nvidia/cuda:12.5.0-runtime-ubuntu22.04
-#FROM alpine:3.19
 
 RUN apt-get update && \
     apt-get install -y bash git openssh-server rsync augeas-tools xz-utils curl gpg && \
