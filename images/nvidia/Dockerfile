@@ -1,7 +1,7 @@
 FROM nvidia/cuda:12.5.0-runtime-ubuntu22.04
 
 RUN apt-get update && \
-    apt-get install -y bash git openssh-server rsync augeas-tools xz-utils curl gpg && \
+    apt-get install -y bash git openssh-server rsync augeas-tools xz-utils curl gpg locales locales-all && \
     deluser $(getent passwd 33 | cut -d: -f1) && \
     delgroup $(getent group 33 | cut -d: -f1) 2>/dev/null || true && \
     mkdir -p ~root/.ssh /etc/authorized_keys && chmod 700 ~root/.ssh/ && \
@@ -10,6 +10,9 @@ RUN apt-get update && \
     cp -a /etc/ssh /etc/ssh.cache && \
     rm -rf /var/lib/apt/lists/*
 
+ENV LANG C.UTF-8
+#ENV LANGUAGE en_US:en
+#ENV LC_ALL en_US.UTF-8
 
 #Install Jellyfin-ffmpeg6
 #https://jellyfin.org/docs/general/administration/hardware-acceleration/nvidia/#configure-with-linux-virtualization

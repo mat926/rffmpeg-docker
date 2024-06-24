@@ -1,4 +1,4 @@
-#. docker build -t rffmpeg-server .
+#docker build -t rffmpeg-server .
 name: rffmpeg-server
 
 version: '3.8'
@@ -31,19 +31,19 @@ volumes:
     driver: local
     driver_opts:
       type: cifs
-      o: username=username,password=pass,addr=<media server ip>,ro
+      o: username=username,password=pass,addr=<media server ip>,iocharset=utf8,ro
       device: //<media server ip>/data/media
   jellyfin_cache:
     name: jellyfin_cache
     driver: local
     driver_opts:
       type: cifs
-      o: username=username,password=pass,addr=<media server ip>,file_mode=0777,dir_mode=0777
+      o: username=username,password=pass,addr=<media server ip>,file_mode=0777,dir_mode=0777,iocharset=utf8
       device: //<media server ip>/docker/jellyfin/cache
   jellyfin_config:
     name: jellyfin_config
     driver: local
     driver_opts:
       type: cifs
-      o: username=username,password=pass,addr=<media server ip>,file_mode=0777,dir_mode=0777
+      o: username=username,password=pass,addr=<media server ip>,file_mode=0777,dir_mode=0777,iocharset=utf8
       device: //<media server ip>/docker/jellyfin/config
