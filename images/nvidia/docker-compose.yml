@@ -24,6 +24,7 @@ services:
           devices:
             - driver: nvidia
               capabilities: [gpu]
+    restart: always
 
 volumes:
   jellyfin_media:
