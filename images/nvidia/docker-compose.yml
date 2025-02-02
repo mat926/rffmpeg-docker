@@ -4,7 +4,8 @@ name: rffmpeg-server
 version: '3.8'
 services:
   rffmpeg-server:
-    image: rffmpeg-server
+    #image: rffmpeg-server
+    build: .
     container_name: rffmpeg-server
     environment:
       - SSH_USERS=dockerlimited:1027:65536 #username/group should match from the media server
