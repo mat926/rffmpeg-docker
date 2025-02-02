@@ -39,7 +39,7 @@ volumes:
     driver: local
     driver_opts:
       type: cifs
-      o: username=username,password=pass,addr=<media server ip>,file_mode=0777,dir_mode=0777,iocharset=utf8
+      o: username=username,password=pass,addr=<media server ip>,file_mode=0777,dir_mode=0777,iocharset=utf8,sync,actimeo=1
       device: //<media server ip>/docker/jellyfin/cache
   jellyfin_config:
     name: jellyfin_config

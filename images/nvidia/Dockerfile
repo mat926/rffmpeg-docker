@@ -14,7 +14,7 @@ ENV LANG C.UTF-8
 #ENV LANGUAGE en_US:en
 #ENV LC_ALL en_US.UTF-8
 
-#Install Jellyfin-ffmpeg6
+#Install Jellyfin-ffmpeg7
 #https://jellyfin.org/docs/general/administration/hardware-acceleration/nvidia/#configure-with-linux-virtualization
 RUN apt-get update &&  \
     apt-get install -y software-properties-common && \
@@ -33,7 +33,7 @@ Architectures: ${DPKG_ARCHITECTURE}
 Signed-By: /etc/apt/keyrings/jellyfin.gpg 
 EOF
 RUN apt update && \
-    apt install -y jellyfin-ffmpeg6 
+    apt install -y jellyfin-ffmpeg7 
 
 
 #Alternate way
